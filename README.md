@@ -10,7 +10,7 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 
 replace yours `channel_id` `token` `process_id` in `index.js` and `server.js`
 
-run `node server.js` first
+first run `node server.js` 
 
 then run `node index.js`
 
@@ -22,3 +22,6 @@ You can send like `Send({Target = 'Discord', Data = 'hello, Im aos'})`
 You also can send with customize name by User tag, This is not required. 
 You can send like this `Send({Target = 'Discord', User = 'aos', Data = 'hello, Im aos'})`
 
+If you do not send with User tag, your User will be displayed in Discord and other user terminals using your pid.
+
+You will not receive your own messages forwarded from Discord， if you want receive， change the judgment condition in server.js.
