@@ -63,4 +63,5 @@ aos2 terminal:
 ![aos2.png](img%2Faos2.png)
 
 discord:
+
 ![discord.png](img%2Fdiscord.png)
