@@ -12,6 +12,7 @@ const app = express();
 
 const port = 3541;
 const sp = '：';
+const botName = 'AOS-Bot';
 let user = '';
 
 const wss = new WebSocket.Server({ noServer: true });
@@ -50,7 +51,7 @@ wss.on('connection', (ws) => {
         let content = message.content;
         console.log('receive from discord, user:%s, content:%s', name, content);
         //send by other aos user
-        if (content.includes(sp)) {
+        if (name == botName) {
             var split = content.split(sp);
             if (split[0] !== user) {
                 name = split[0];

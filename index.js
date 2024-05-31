@@ -58,9 +58,7 @@ function sendMessageToWebSocket(message) {
     if (discortSocket.readyState === WebSocket.OPEN) {
         discortSocket.send(message);
     } else {
-        console.log('WebSocket is not open, try connect now');
-        discortSocket = new WebSocket('ws://localhost:3541');
-        sendMessageToWebSocket(message)
+        console.log('WebSocket is not open, please restart index.js');
     }
 }
 setInterval(() => {
