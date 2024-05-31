@@ -57,9 +57,11 @@ changed as
 <h1> Img </h1>
 
 aos1 terminal:
+
 ![aos1.png](img%2Faos1.png)
 
 aos2 terminal:
+
 ![aos2.png](img%2Faos2.png)
 
 discord:
