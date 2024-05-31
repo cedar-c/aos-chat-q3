@@ -49,10 +49,8 @@ changed as
             var split = content.split(sp);
             name = split[0];
             content = split[1];
-            sendMsg({name:name, content:content});
-        }else {
-            sendMsg({name:name, content:content});
         }
+        sendMsg({name:name, content:content});
 ```
 <h1> Img </h1>
 The print content has now been updated to show the name or pid you defined when you sent it instead of your bot name。
