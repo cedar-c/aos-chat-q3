@@ -24,4 +24,27 @@ You can send like this `Send({Target = 'Discord', User = 'aos', Data = 'hello, I
 
 If you do not send with User tag, your User will be displayed in Discord and other user terminals using your pid.
 
-You will not receive your own messages forwarded from Discord， if you want receive， change the judgment condition in server.js.
+You will not receive your own messages forwarded from Discord， if you want to receive， change the judgment condition in server.js.
+```
+        if (content.includes(sp)) {
+            var split = content.split(sp);
+            if (split[0] !== user) {
+                name = split[0];
+                content = split[1];
+                sendMsg({name:name, content:content});
+            }
+        }else {
+            sendMsg({name:name, content:content});
+        }
+```
+changed as
+```
+        if (content.includes(sp)) {
+            var split = content.split(sp);
+            name = split[0];
+            content = split[1];
+            sendMsg({name:name, content:content});
+        }else {
+            sendMsg({name:name, content:content});
+        }
+```
