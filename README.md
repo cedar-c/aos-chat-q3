@@ -8,20 +8,26 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 
 <h1> Use </h1>
 
-replace yours `channel_id` `token` `process_id` in `index.js` and `server.js`
+1. replace yours `channel_id` `token` `process_id` in `index.js` and `server.js`
 
-first run `node server.js` 
 
-then run `node index.js`
+2. first run `node server.js` 
 
-last Enter the aos terminal and `.load myroom.lua`
 
-Send a message with the `Target = 'Discord'` and have `Data` ,This is required. 
+3. then run `node index.js`
+
+
+4. last Enter the aos terminal and `.load myroom.lua`
+
+
+5. Send a message with the `Target = 'Discord'` and have `Data` ,This is required. 
 You can send like `Send({Target = 'Discord', Data = 'hello, Im aos'})`
 
-You also can send with customize name by User tag, This is not required. 
+
+6. You also can send with customize name by User tag, This is not required. 
 You can send like this `Send({Target = 'Discord', User = 'aos', Data = 'hello, Im aos'})`
 
+<h1> Notice </h1>
 If you do not send with User tag, your User will be displayed in Discord and other user terminals using your pid.
 
 You will not receive your own messages forwarded from Discord， if you want to receive， change the judgment condition in server.js.
@@ -48,3 +54,13 @@ changed as
             sendMsg({name:name, content:content});
         }
 ```
+<h1> Img </h1>
+
+aos1 terminal:
+![aos1.png](img%2Faos1.png)
+
+aos2 terminal:
+![aos2.png](img%2Faos2.png)
+
+discord:
+![discord.png](img%2Fdiscord.png)
