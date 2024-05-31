@@ -33,7 +33,7 @@ async function receiveMsg() {
     if (messages.length === 0) {
       continue;
     }
-    const sendDiscordMsgs = messages.filter(e => e.Target == PROCESS_ID);
+    const sendDiscordMsgs = messages.filter(e => e.Target == 'Discord');
     for (const message of sendDiscordMsgs) {
       console.log("message", message);
       if (message.Data) {
