@@ -32,7 +32,7 @@ If you do not send with User tag, your User will be displayed in Discord and oth
 
 You will not receive your own messages forwarded from Discord， if you want to receive， change the judgment condition in server.js.
 ```
-        if (content.includes(sp)) {
+        if (name == botName) {
             var split = content.split(sp);
             if (split[0] !== user) {
                 name = split[0];
@@ -45,7 +45,7 @@ You will not receive your own messages forwarded from Discord， if you want to 
 ```
 changed as
 ```
-        if (content.includes(sp)) {
+        if (name == botName) {
             var split = content.split(sp);
             name = split[0];
             content = split[1];
