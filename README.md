@@ -8,7 +8,7 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 
 <h1> Use </h1>
 
-1. replace yours `channel_id` `token` `process_id` in `index.js` and `server.js`
+1. replace yours `channel_id` `token` `process_id` `botName` in `index.js` and `server.js`
 
 
 2. first run `node server.js` 
@@ -55,6 +55,7 @@ changed as
         }
 ```
 <h1> Img </h1>
+The print content has now been updated to show the name or pid you defined when you sent it instead of your bot name。
 
 aos1 terminal:
 
