@@ -11,47 +11,24 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 1. replace yours `channel_id` `token` `process_id` `botName` in `index.js` and `server.js`
 
 
-2. first run `node server.js` 
+2. first run `.load client.lua` 
 
 
-3. then run `node index.js`
+3. then run `.load chatroom.lua`
 
 
-4. last Enter the aos terminal and `.load chatroom.lua`
+4. then regist `ao.send({ Target = "xnkv_QpWqICyt8NpVMbfsUQciZ4wlm5DigLrfXRm8fY", Action = "Register", Name = "[YOUR NAME HERE]" })`
+   like cookbook said, you can use `Join("[YOUR NAME HERE]","[YOUR NickNAME HERE]")`
 
 
-5. Send a message with the `Target = 'Discord'` and have `Data` ,This is required. 
-You can send like `Send({Target = 'Discord', Data = 'hello, Im aos'})`
+<h1>Send Message</h1>
 
+you can use "Say" to send with your name by you regist.
+`Say("msg","[YOUR NAME HERE]","[YOUR NICKNAME HERE]")`
+NICKNAME is not necessary
 
-6. You also can send with customize name by User tag, This is not required. 
-You can send like this `Send({Target = 'Discord', User = 'aos', Data = 'hello, Im aos'})`
+The result is displayed in discord as ：`[YOUR NickNAME HERE](if you set) ： msg` 
 
-<h1> Notice </h1>
-If you do not send with User tag, your User will be displayed in Discord and other user terminals using your pid.
-
-You will not receive your own messages forwarded from Discord， if you want to receive， change the judgment condition in server.js.
-```
-        if (name == botName) {
-            var split = content.split(sp);
-            if (split[0] !== user) {
-                name = split[0];
-                content = split[1];
-                sendMsg({name:name, content:content});
-            }
-        }else {
-            sendMsg({name:name, content:content});
-        }
-```
-changed as
-```
-        if (name == botName) {
-            var split = content.split(sp);
-            name = split[0];
-            content = split[1];
-        }
-        sendMsg({name:name, content:content});
-```
 <h1> Img </h1>
 The print content has now been updated to show the name or pid you defined when you sent it instead of your bot name。
 
