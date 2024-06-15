@@ -66,12 +66,17 @@ Say =
     function(text, ...)
         local arg = {...}
         local id = arg[1]
+        local user = arg[2]
         if id ~= nil then
             -- Remember the new room for next time.
             DevChat.LastSend = DevChat.findRoom(id) or id
         end
         local name = DevChat.Rooms[DevChat.LastSend] or id
-        ao.send({ Target = DevChat.LastSend, Action = "Broadcast", Data = text })
+        if user ~= nil then
+            ao.send({ Target = DevChat.LastSend, Action = "Broadcast", Data = text, User = user })
+        else
+            ao.send({ Target = DevChat.LastSend, Action = "Broadcast", Data = text })
+        end
         if DevChat.Confirmations then
             return(DevChat.Colors.gray .. "Broadcasting to " .. DevChat.Colors.blue ..
                 name .. DevChat.Colors.gray .. "..." .. DevChat.Colors.reset)
@@ -166,6 +171,15 @@ Handlers.add(
     end
 )
 
+
+Handlers.add(
+    "ReceiveDiscord",
+    Handlers.utils.hasMatchingTag("Action", "ReceiveDiscord"),
+    function(m)
+       print(Colors.green..m.User..Colors.red.." : "..Colors.reset.. m.Data)
+    end
+)
+
 Handlers.add(
     "DevChat-List",
     function(m)
@@ -211,6 +225,5 @@ return(
     DevChat.Colors.green .. "\t\t`Replay([\"Count\"])`" .. DevChat.Colors.reset .. " to reprint the most recent messages from a chat.\n" ..
     DevChat.Colors.green .. "\t\t`Leave(\"RoomName\")`" .. DevChat.Colors.reset .. " at any time to unsubscribe from a chat.\n" ..
     DevChat.Colors.green .. "\t\t`Tip([\"Recipient\"])`" .. DevChat.Colors.reset .. " to send a token from the chatroom to the sender of the last message.\n\n" ..
-    DevChat.Colors.green .. "\t\t`Sedn(Target = \"Discord\", Data = \"MSG\")`" .. DevChat.Colors.reset .. " to send message to Discord room.\n\n" ..
     "You have already been registered to the " .. DevChat.Colors.blue .. DevChat.Rooms[DevChat.InitRoom] .. DevChat.Colors.reset .. ".\n" ..
     "Have fun, be respectful, and remember: Cypherpunks ship code! 🫡")
