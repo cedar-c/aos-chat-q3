@@ -223,10 +223,10 @@ return(
     DevChat.Colors.blue .. "\n\nWelcome to ao DevChat v0.1!\n\n" .. DevChat.Colors.reset ..
     "DevChat is a simple service that helps the ao community communicate as we build our new computer.\n" ..
     "The interface is simple. Run...\n\n" ..
+    DevChat.Colors.red .. "\t\t`Say(\"Msg\", \"Discord\")`" .. DevChat.Colors.reset .. " to chat with Discord channal\n" ..
     DevChat.Colors.green .. "\t\t`List()`" .. DevChat.Colors.reset .. " to see which rooms are available.\n" .. 
     DevChat.Colors.green .. "\t\t`Join(\"RoomName\")`" .. DevChat.Colors.reset .. " to join a room.\n" .. 
     DevChat.Colors.green .. "\t\t`Say(\"Msg\"[, \"RoomName\"])`" .. DevChat.Colors.reset .. " to post to a room (remembering your last choice for next time).\n" ..
-    DevChat.Colors.red .. "\t\t`Say(\"Msg\", \"Discord\")`" .. DevChat.Colors.reset .. " to chat with Discord channal\n" ..
     DevChat.Colors.green .. "\t\t`Replay([\"Count\"])`" .. DevChat.Colors.reset .. " to reprint the most recent messages from a chat.\n" ..
     DevChat.Colors.green .. "\t\t`Leave(\"RoomName\")`" .. DevChat.Colors.reset .. " at any time to unsubscribe from a chat.\n" ..
     DevChat.Colors.green .. "\t\t`Tip([\"Recipient\"])`" .. DevChat.Colors.reset .. " to send a token from the chatroom to the sender of the last message.\n\n" ..
