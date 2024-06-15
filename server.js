@@ -32,8 +32,7 @@ discordClient.login(token);
 
 wss.on('connection', (ws) => {
     ws.on('message', (message) => {
-        message = message.toString();
-        console.log('receive from aos', message);
+        message = message.toString();      
         if (message.split(sp)[0] !== 'noUser') {
             user = message.split(sp)[0];
         }else {
@@ -42,6 +41,7 @@ wss.on('connection', (ws) => {
         }
         const channel = discordClient.channels.cache.get(DISCORD_CHANNEL_ID);
         if (channel) {
+            console.log('send to Discord', message);
             channel.send(message);
         }
     });
