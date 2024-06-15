@@ -17,7 +17,7 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 3. then run `.load chatroom.lua`
 
 
-4. Registering your process with the :router
+4. registering your process with the :router
     `ao.send({ Target = "xnkv_QpWqICyt8NpVMbfsUQciZ4wlm5DigLrfXRm8fY", Action = "Register", Name = "[YOUR NAME HERE]" })`
    
    like cookbook said, you can use `Join("[YOUR NAME HERE]","[YOUR NickNAME HERE]")`
