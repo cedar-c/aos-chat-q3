@@ -28,7 +28,7 @@ async function receiveMsg() {
 
     for (const result of resultsOut2.edges.reverse()) {
         cursor = result.cursor;
-        console.log('result', result);
+        console.log('result: ', result.node.Output.Data);
         var messages = result.node.Messages;
         if (messages.length === 0) {
             continue;
@@ -41,6 +41,7 @@ async function receiveMsg() {
                 sendMessageToWebSocket(user + sp + message.Data);
             }
         }
+
     }
 }
 
