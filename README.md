@@ -10,11 +10,9 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 
 1. replace yours `process_id` in `index.js` and `server.js`
 
+2. run `.load client.lua` 
 
-2. first run `.load client.lua` 
-
-
-3. then run `.load chatroom.lua`
+3. run `.load chatroom.lua`
 
 4. run `node server.js`
    
