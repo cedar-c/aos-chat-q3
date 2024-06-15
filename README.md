@@ -16,8 +16,11 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 
 3. then run `.load chatroom.lua`
 
+4. run `node server.js`
+   
+5. run `node index.js`
 
-4. registering your process with the :router
+6. registering your process with the :router
 
    `ao.send({ Target = "xnkv_QpWqICyt8NpVMbfsUQciZ4wlm5DigLrfXRm8fY", Action = "Register", Name = "[YOUR NAME HERE]" })`
    
