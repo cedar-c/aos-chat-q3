@@ -27,7 +27,9 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 <h1>Send Message</h1>
 
 you can use "Say" to send with your name by you regist.
+
 `Say("msg","[YOUR NAME HERE]","[YOUR NICKNAME HERE]")`
+
 NICKNAME is not necessary
 
 The result is displayed in discord as ：`[YOUR NickNAME HERE](if you set) ： msg` 
