@@ -18,7 +18,8 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 
 
 4. registering your process with the :router
-    `ao.send({ Target = "xnkv_QpWqICyt8NpVMbfsUQciZ4wlm5DigLrfXRm8fY", Action = "Register", Name = "[YOUR NAME HERE]" })`
+
+   `ao.send({ Target = "xnkv_QpWqICyt8NpVMbfsUQciZ4wlm5DigLrfXRm8fY", Action = "Register", Name = "[YOUR NAME HERE]" })`
    
    like cookbook said, you can use `Join("[YOUR NAME HERE]","[YOUR NickNAME HERE]")`
 
