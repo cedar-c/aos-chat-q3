@@ -8,7 +8,7 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 
 <h1> Use </h1>
 
-1. replace yours `channel_id` `token` `process_id` `botName` in `index.js` and `server.js`
+1. replace yours `process_id` in `index.js` and `server.js`
 
 
 2. first run `.load client.lua` 
