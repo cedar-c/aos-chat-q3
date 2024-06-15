@@ -4,7 +4,7 @@ const { Client, GatewayIntentBits } = require('discord.js');
 const WebSocket = require('ws');
 const express = require('express');
 
-const DISCORD_CHANNEL_ID = YOUR_CHANNEL_ID;
+const DISCORD_CHANNEL_ID = 1245267320646012974;
 const token = YOUR_TOKEN;
 const PROCESS_ID = YOUR_PROCESS;
 
