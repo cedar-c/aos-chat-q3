@@ -177,9 +177,9 @@ Handlers.add(
     Handlers.utils.hasMatchingTag("Action", "ReceiveDiscord"),
     function(m)
         if m.User == "You" then
-            print(DevChat.Colors.blue .. "[Discord] " .. DevChat.Colors.green .. m.User..DevChat.Colors.green .. " : " .. DevChat.Colors.reset .. m.Data)
+            print(DevChat.Colors.blue .. "[Discord] " .. DevChat.Colors.green .. m.User..DevChat.Colors.red .. " : " .. DevChat.Colors.reset .. m.Data)
         else
-            print(DevChat.Colors.blue .. "[Discord] ".. DevChat.Colors.red .. m.User..DevChat.Colors.red .. " : " .. DevChat.Colors.reset .. m.Data)
+            print(DevChat.Colors.blue .. "[Discord] " .. DevChat.Colors.red .. m.User..DevChat.Colors.green .. " : " .. DevChat.Colors.reset .. m.Data)
         end
     end
 )
