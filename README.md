@@ -17,7 +17,7 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 3. then run `node index.js`
 
 
-4. last Enter the aos terminal and `.load myroom.lua`
+4. last Enter the aos terminal and `.load chatroom.lua`
 
 
 5. Send a message with the `Target = 'Discord'` and have `Data` ,This is required. 
