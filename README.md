@@ -1,5 +1,7 @@
 # aos-chat-q3
 
+[join discord channal](https://discord.gg/VBVmJfr5)
+
 <h1> Install </h1>
 
 This program need ws、fs、express、discord.js、@permaweb/aoconnect
