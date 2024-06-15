@@ -53,14 +53,12 @@ wss.on('connection', (ws) => {
         //send by other aos user
         if (name == botName) {
             var split = content.split(sp);
-            if (split[0] !== user) {
-                name = split[0];
-                content = split[1];
-                sendMsg({name:name, content:content});
+            if (split[0] === user) {
+                name = 'You';
+                content = content.split(sp)[1];
             }
-        }else {
-            sendMsg({name:name, content:content});
         }
+        sendMsg({name:name, content:content});
     });
 });
 
