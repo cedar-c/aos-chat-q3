@@ -32,13 +32,6 @@ function Broadcast(from, data, type)
     table.insert(Messages, { From = from, Type = type, Data = data })
 end
 
-Handlers.add(
-    "ReceiveDiscord",
-    Handlers.utils.hasMatchingTag("Action", "ReceiveDiscord"),
-    function(m)
-       print(Colors.green..m.User..Colors.red.." : "..Colors.reset.. m.Data)
-    end
-)
 
 Handlers.add(
     "Register",
