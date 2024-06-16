@@ -223,7 +223,7 @@ return(
     DevChat.Colors.blue .. "\n\nWelcome to ao DevChat v0.1!\n\n" .. DevChat.Colors.reset ..
     "DevChat is a simple service that helps the ao community communicate as we build our new computer.\n" ..
     "The interface is simple. Run...\n\n" ..
-    DevChat.Colors.red .. "\t\t`Say(\"Msg\", \"Discord\")`" .. DevChat.Colors.reset .. " to chat with Discord channal\n" ..
+    DevChat.Colors.red .. "\t\t`Say(\"Msg\", \"Discord\")`" .. DevChat.Colors.reset .. " to chat with Discord channel\n" ..
     DevChat.Colors.green .. "\t\t`List()`" .. DevChat.Colors.reset .. " to see which rooms are available.\n" .. 
     DevChat.Colors.green .. "\t\t`Join(\"RoomName\")`" .. DevChat.Colors.reset .. " to join a room.\n" .. 
     DevChat.Colors.green .. "\t\t`Say(\"Msg\"[, \"RoomName\"])`" .. DevChat.Colors.reset .. " to post to a room (remembering your last choice for next time).\n" ..
