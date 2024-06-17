@@ -14,7 +14,7 @@ You can send messages directly, but this will use the default pid.
 
 2. `[bind]` : It allows you to bind your own pid so that the messages you send are forwarded using your own pid instead of the default one.
 
-      Note: Your pid must have loaded the `chatroom.lua` of this project, and has joined Getting-Started room.
+      Note: Your pid must have loaded the `chatroom.lua` of this project, and has joined `Getting-Started` room.
 
 <h1> Install </h1>
 
