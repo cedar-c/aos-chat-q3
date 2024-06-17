@@ -11,9 +11,7 @@ const PROCESS_ID = 'DS4jFzjZ1wCvAGTLMNEg0Z5w8PHFS5Ipwd-Ur-Xg0GQ';
 const app = express();
 
 const port = 3541;
-const sp = '：';
 const botName = 'AOS-Bot';
-let user = '';
 
 const wss = new WebSocket.Server({ noServer: true });
 const discordClient = new Client({
@@ -46,7 +44,7 @@ wss.on('connection', (ws) => {
         console.log('receive from discord, user:%s, content:%s', name, content);
         //send by other aos user
         if (name !== botName) {
-            sendMsg(content);
+            sendMsg({name:name, content:content});
         }
     });
 });
@@ -63,6 +61,9 @@ server.on('upgrade', (request, socket, head) => {
 
 async function sendMsg(msg) {
 
+    const user = msg.name;
+    const content = msg.content;
+
     const wallet = JSON.parse(
         readFileSync('/root/.aos.json').toString(),
     );
@@ -77,7 +78,8 @@ async function sendMsg(msg) {
         // Tags that the process will use as input.
         tags: [
             {name: 'Action', value: 'ReceiveDiscord'},
-            {name: 'Data', value: msg},
+            {name: 'Data', value: content},
+            {name: 'User', value: user},
         ],
         // A signer function used to build the message 'signature'
         signer: createDataItemSigner(wallet),
@@ -85,7 +87,7 @@ async function sendMsg(msg) {
           The 'data' portion of the message
           If not specified a random string will be generated
         */
-        data: msg,
+        data: content,
     })
         // .then(console.log)
         .catch(console.error);
