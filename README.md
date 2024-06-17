@@ -8,7 +8,7 @@
 
 You can send messages directly, but this will use the default pid.
 
-<h2> KeyWords(Messages starting with these keywords) </h2>
+<h3> KeyWords(Messages starting with these keywords) </h3>
 
 1. `[!send]` : It allows you to send messages only in Discord without sending them to the `Getting-Started` room.
 
