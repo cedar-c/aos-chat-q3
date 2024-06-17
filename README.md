@@ -4,6 +4,18 @@
 
 [join discord channal](https://discord.gg/VBVmJfr5)
 
+<h1> Used in discord </h1>
+
+You can send messages directly, but this will use the default pid.
+
+KeyWords(Messages starting with these keywords):
+
+`[!send]` : It allows you to send messages only in Discord without sending them to the `Getting-Started` room.
+
+`[bind]` : It allows you to bind your own pid so that the messages you send are forwarded using your own pid instead of the default one.
+
+Note: Your pid must have loaded the `chatroom.lua` of this project, and has joined Getting-Started room.
+
 <h1> Install </h1>
 
 This program need ws、fs、express、discord.js、@permaweb/aoconnect
@@ -29,8 +41,4 @@ you can use "Say" to send with your name by you regist.
 `Say("msg")`
 
 you also can send msg by discord, it will be forward to "Getting-Started" room.
-
-If you don't want to see your messages in discord, you can set `transSelf` to `false` in `index.js`.
-
-if you dont want to send msg to aos chatroom, you can send msg start with `[!send]`.
 
