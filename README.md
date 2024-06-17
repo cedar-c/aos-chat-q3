@@ -1,8 +1,8 @@
 # aos-chat-q3
 
-[join discord channal](https://discord.gg/VBVmJfr5)
-
 <h1>You can join discord and use it directly</h1>
+
+[join discord channal](https://discord.gg/VBVmJfr5)
 
 <h1> Install </h1>
 
