@@ -30,18 +30,22 @@ async function receiveMsg() {
         cursor = result.cursor;
         console.log('result: ', result.node);
         const odata = result.node.Output.data;
-        if (typeof odata === 'string' && odata.includes('[0m@\x1B[34mGetting-Started\x1B[0m]>')) {
-            if (odata.includes('Received confirmation of your broadcast')) {
-                const youmsg = odata.split('\x1B[32m')[1].split('\x1B[0m')[0];
-                sendMessageToWebSocket('YouSelf: ' + youmsg);
-            }else {
-                sendMessageToWebSocket(odata.replace(/\u001B\[[0-9;]*m/g, ''));
-                // console.log('output',result.node.Output);
-            }
+        if (typeof odata === 'string' && odata.includes('[0m@\x1B[34mGetting-Started\x1B[0m]>') && !odata.includes('Received confirmation of your broadcast')) {
+            sendMessageToWebSocket(odata.replace(/\u001B\[[0-9;]*m/g, ''));
+            // console.log('output',result.node.Output);
         }
         var messages = result.node.Messages;
-        for (const msg of messages) {
-            console.log('message:',messages)
+        const sendDiscordMsgs = messages.filter(m => m.Target === '6I1JBBc9SOMtqFxlX7OoYgsMh7QeZk2fFwUCHTUqshg');
+        for (const message of sendDiscordMsgs) {
+            console.log('message:',message)
+            let send = message.Tags.find(t => t.name === 'Send');
+            if (send && send.value === 'discord') {
+                const user = message.Tags.find(t => t.name === 'NickName').value;
+                console.log(user + ':' + message.Data);
+                sendMessageToWebSocket('Send from Discord<' + user + '>：' + message.Data);
+            }else {
+                sendMessageToWebSocket('Send from aos terminal：' + message.Data);
+            }
         }
     }
 }
