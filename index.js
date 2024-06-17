@@ -4,7 +4,8 @@ const WebSocket = require("ws");
 const PROCESS_ID = 'DS4jFzjZ1wCvAGTLMNEg0Z5w8PHFS5Ipwd-Ur-Xg0GQ';
 
 let cursor = '';
-const sp = '：';
+let transSelf = true;
+
 async function receiveMsg() {
     // fetching the first page of results
 
@@ -37,9 +38,9 @@ async function receiveMsg() {
         var messages = result.node.Messages;
         const sendDiscordMsgs = messages.filter(m => m.Target === '6I1JBBc9SOMtqFxlX7OoYgsMh7QeZk2fFwUCHTUqshg');
         for (const message of sendDiscordMsgs) {
-            console.log('message:',message)
+            // console.log('message:',message)
             let send = message.Tags.find(t => t.name === 'Send');
-            if (send && send.value === 'discord') {
+            if (transSelf && send && send.value === 'discord') {
                 const user = message.Tags.find(t => t.name === 'NickName').value;
                 console.log(user + ':' + message.Data);
                 sendMessageToWebSocket('Send from Discord<' + user + '>：' + message.Data);
