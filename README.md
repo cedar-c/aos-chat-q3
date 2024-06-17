@@ -32,3 +32,5 @@ you also can send msg by discord, it will be forward to "Getting-Started" room.
 
 If you don't want to see your messages in discord, you can set `transSelf` to `false` in `index.js`.
 
+if you don`t want to send msg to aos chatroom, you can send msg start with `[!send]`.
+
