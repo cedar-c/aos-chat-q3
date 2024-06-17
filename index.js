@@ -4,7 +4,7 @@ const WebSocket = require("ws");
 const PROCESS_ID = 'DS4jFzjZ1wCvAGTLMNEg0Z5w8PHFS5Ipwd-Ur-Xg0GQ';
 
 let cursor = '';
-let transSelf = true;
+let transSelf = false;
 
 async function receiveMsg() {
     // fetching the first page of results
@@ -31,9 +31,13 @@ async function receiveMsg() {
         cursor = result.cursor;
         console.log('result: ', result.node);
         const odata = result.node.Output.data;
-        if (typeof odata === 'string' && odata.includes('[0m@\x1B[34mGetting-Started\x1B[0m]>') && !odata.includes('Received confirmation of your broadcast')) {
-            sendMessageToWebSocket(odata.replace(/\u001B\[[0-9;]*m/g, ''));
-            // console.log('output',result.node.Output);
+        if (typeof odata === 'string' && odata.includes('[0m@\x1B[34mGetting-Started\x1B[0m]>')) {
+            if (odata.includes('Received confirmation of your broadcast')) {
+                sendMessageToWebSocket(odata.split('\n')[1].replace(/\u001B\[[0-9;]*m/g, ''));
+            }else {
+                sendMessageToWebSocket(odata.replace(/\u001B\[[0-9;]*m/g, ''));
+                // console.log('output',result.node.Output);
+            }
         }
         var messages = result.node.Messages;
         const sendDiscordMsgs = messages.filter(m => m.Target === '6I1JBBc9SOMtqFxlX7OoYgsMh7QeZk2fFwUCHTUqshg');
@@ -43,8 +47,8 @@ async function receiveMsg() {
             if (transSelf && send && send.value === 'discord') {
                 const user = message.Tags.find(t => t.name === 'NickName').value;
                 sendMessageToWebSocket('Send from Discord<' + user + '>：' + message.Data);
-            }else {
-                sendMessageToWebSocket('Send from aos terminal：' + message.Data);
+            // }else if (message.Tags.find(t => t.name === 'Action' && t.value === 'Broadcast')){
+            //     sendMessageToWebSocket('Send from aos terminal：' + message.Data);
             }
         }
     }
