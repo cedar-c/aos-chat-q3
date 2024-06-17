@@ -26,7 +26,7 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 
 `npm install ws fs express discord.js @permaweb/aoconnect`
 
-<h1> Use </h1>
+<h1> Run </h1>
 
 1. replace yours `process_id` in `index.js` and `server.js`
 
