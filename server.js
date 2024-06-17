@@ -43,7 +43,7 @@ wss.on('connection', (ws) => {
         let content = message.content;
         console.log('receive from discord, user:%s, content:%s', name, content);
         //send by other aos user
-        if (name !== botName) {
+        if (name !== botName && !content.startsWith('[!send]')) {
             sendMsg({name:name, content:content});
         }
     });
