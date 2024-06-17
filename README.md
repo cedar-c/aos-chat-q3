@@ -14,18 +14,13 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 
 1. replace yours `process_id` in `index.js` and `server.js`
 
-2. run `.load-blueprint chat` 
+2. make sure your process has executed the command:
+   `.load-blueprint chat` and `.load chatroom.lua` and `Join("Getting-Started", "yourName")`
 
-3. run `.load chatroom.lua`
-
-4. run `node server.js`
+3. run `node server.js`
    
-5. run `node index.js`
+4. run `node index.js`
 
-6. registering your process
-
-`Join("Getting-Started", "yourName")`
-   
 
 <h1>Send Message</h1>
 
