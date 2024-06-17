@@ -6,7 +6,7 @@ const express = require('express');
 
 const DISCORD_CHANNEL_ID = 1245267320646012974;
 const token = YOUR_TOKEN;
-const PROCESS_ID = YOUR_PROCESS;
+const PROCESS_ID = 'DS4jFzjZ1wCvAGTLMNEg0Z5w8PHFS5Ipwd-Ur-Xg0GQ';
 
 const app = express();
 
@@ -32,13 +32,7 @@ discordClient.login(token);
 
 wss.on('connection', (ws) => {
     ws.on('message', (message) => {
-        message = message.toString();      
-        if (message.split(sp)[0] !== 'noUser') {
-            user = message.split(sp)[0];
-        }else {
-            user = PROCESS_ID;
-            message = message.replace('noUser',user);
-        }
+        message = message.toString();
         const channel = discordClient.channels.cache.get(DISCORD_CHANNEL_ID);
         if (channel) {
             console.log('send to Discord', message);
@@ -51,14 +45,9 @@ wss.on('connection', (ws) => {
         let content = message.content;
         console.log('receive from discord, user:%s, content:%s', name, content);
         //send by other aos user
-        if (name == botName) {
-            var split = content.split(sp);
-            if (split[0] === user) {
-                name = 'You';
-                content = content.split(sp)[1];
-            }
+        if (name !== botName) {
+            sendMsg(content);
         }
-        sendMsg({name:name, content:content});
     });
 });
 
@@ -74,16 +63,12 @@ server.on('upgrade', (request, socket, head) => {
 
 async function sendMsg(msg) {
 
-    const user = msg.name;
-    const content = msg.content;
-
     const wallet = JSON.parse(
         readFileSync('/root/.aos.json').toString(),
     );
 
 // The only 2 mandatory parameters here are process and signer
     await message({
-
         /*
           The arweave TXID of the process, this will become the 'target'.
           This is the process the message is ultimately sent to.
@@ -92,8 +77,7 @@ async function sendMsg(msg) {
         // Tags that the process will use as input.
         tags: [
             {name: 'Action', value: 'ReceiveDiscord'},
-            {name: 'Data', value: content},
-            {name: 'User', value: user},
+            {name: 'Data', value: msg},
         ],
         // A signer function used to build the message 'signature'
         signer: createDataItemSigner(wallet),
@@ -101,8 +85,8 @@ async function sendMsg(msg) {
           The 'data' portion of the message
           If not specified a random string will be generated
         */
-        data: content,
+        data: msg,
     })
-        .then(console.log)
+        // .then(console.log)
         .catch(console.error);
 }
