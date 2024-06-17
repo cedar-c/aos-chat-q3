@@ -13,6 +13,18 @@ const app = express();
 const port = 3541;
 const botName = 'AOS-Bot';
 
+const filePath = './process.json'
+
+let processMap = null;
+loadMapFromFile()
+  .then((map) => {
+    processMap = map; 
+    console.log('processMap loaded successfully.');
+  })
+  .catch((err) => {
+    console.error('Error loading map:', err);
+});
+
 const wss = new WebSocket.Server({ noServer: true });
 const discordClient = new Client({
     intents: [
@@ -32,8 +44,8 @@ wss.on('connection', (ws) => {
     ws.on('message', (message) => {
         message = message.toString();
         const channel = discordClient.channels.cache.get(DISCORD_CHANNEL_ID);
+        console.log('send to Discord：', message);
         if (channel) {
-            console.log('send to Discord', message);
             channel.send(message);
         }
     });
@@ -42,8 +54,10 @@ wss.on('connection', (ws) => {
         let name = message.author.username;
         let content = message.content;
         console.log('receive from discord, user:%s, content:%s', name, content);
-        //send by other aos user
-        if (name !== botName && !content.startsWith('[!send]')) {
+        if(content.startsWith('[bind]')) {
+            processMap.set(name,content.split(']')[1]);
+            saveMapToFile(processMap,filePath);
+        }else if(name !== botName && !content.startsWith('[!send]')) {
             sendMsg({name:name, content:content});
         }
     });
@@ -63,7 +77,7 @@ async function sendMsg(msg) {
 
     const user = msg.name;
     const content = msg.content;
-
+    
     const wallet = JSON.parse(
         readFileSync('/root/.aos.json').toString(),
     );
@@ -74,7 +88,7 @@ async function sendMsg(msg) {
           The arweave TXID of the process, this will become the 'target'.
           This is the process the message is ultimately sent to.
         */
-        process: PROCESS_ID,
+        process: processMap.has(user) ? processMap.get(user) : PROCESS_ID,
         // Tags that the process will use as input.
         tags: [
             {name: 'Action', value: 'ReceiveDiscord'},
@@ -91,4 +105,38 @@ async function sendMsg(msg) {
     })
         // .then(console.log)
         .catch(console.error);
+}
+
+function saveMapToFile(map, filePath) {
+    const serializedMap = JSON.stringify(Array.from(map));
+    fs.writeFile(filePath, serializedMap, (err) => {
+      if (err) throw err;
+      console.log('Map saved to file.');
+    });
+  }
+
+function loadMapFromFile() {
+    return new Promise((resolve, reject) => {
+      fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+          if (err.code === 'ENOENT') {
+            resolve(new Map());
+          } else {
+            reject(err);
+          }
+          return;
+        }
+        if (data.trim() === '') {
+            resolve(new Map());
+        }else {
+            try {
+            const mapData = JSON.parse(data);
+            const map = new Map(mapData);
+            resolve(map);
+            } catch (err) {
+            reject(err);
+            }
+        }
+      });
+    });
 }
