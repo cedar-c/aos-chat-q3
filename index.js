@@ -36,19 +36,7 @@ async function receiveMsg() {
                 sendMessageToWebSocket(odata.split('\n')[1].replace(/\u001B\[[0-9;]*m/g, ''));
             }else {
                 sendMessageToWebSocket(odata.replace(/\u001B\[[0-9;]*m/g, ''));
-                // console.log('output',result.node.Output);
-            }
-        }
-        var messages = result.node.Messages;
-        const sendDiscordMsgs = messages.filter(m => m.Target === '6I1JBBc9SOMtqFxlX7OoYgsMh7QeZk2fFwUCHTUqshg');
-        for (const message of sendDiscordMsgs) {
-            // console.log('message:',message)
-            let send = message.Tags.find(t => t.name === 'Send');
-            if (transSelf && send && send.value === 'discord') {
-                const user = message.Tags.find(t => t.name === 'NickName').value;
-                sendMessageToWebSocket('Send from Discord<' + user + '>：' + message.Data);
-            // }else if (message.Tags.find(t => t.name === 'Action' && t.value === 'Broadcast')){
-            //     sendMessageToWebSocket('Send from aos terminal：' + message.Data);
+                console.log('output',result.node.Output);
             }
         }
     }
