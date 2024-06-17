@@ -8,11 +8,11 @@
 
 You can send messages directly, but this will use the default pid.
 
-KeyWords(Messages starting with these keywords):
+<h2> KeyWords(Messages starting with these keywords) </h2>
 
-`[!send]` : It allows you to send messages only in Discord without sending them to the `Getting-Started` room.
+1. `[!send]` : It allows you to send messages only in Discord without sending them to the `Getting-Started` room.
 
-`[bind]` : It allows you to bind your own pid so that the messages you send are forwarded using your own pid instead of the default one.
+2. `[bind]` : It allows you to bind your own pid so that the messages you send are forwarded using your own pid instead of the default one.
 
 Note: Your pid must have loaded the `chatroom.lua` of this project, and has joined Getting-Started room.
 
