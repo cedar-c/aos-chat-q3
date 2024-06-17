@@ -1,7 +1,7 @@
 const { results } = require("@permaweb/aoconnect");
 const WebSocket = require("ws");
 
-const PROCESS_ID = YOUR_PROCESS;
+const PROCESS_ID = 'DS4jFzjZ1wCvAGTLMNEg0Z5w8PHFS5Ipwd-Ur-Xg0GQ';
 
 let cursor = '';
 const sp = '：';
@@ -28,20 +28,21 @@ async function receiveMsg() {
 
     for (const result of resultsOut2.edges.reverse()) {
         cursor = result.cursor;
-        console.log('result: ', result.node.Output.Data);
-        var messages = result.node.Messages;
-        if (messages.length === 0) {
-            continue;
-        }
-        const sendDiscordMsgs = messages.filter(m => m.Target === 'Discord');
-        for (const message of sendDiscordMsgs) {
-            if (message.Data) {
-                console.log('message:', message);
-                const user = message.Tags.find(e => e.name == 'User')?.value || 'noUser';
-                sendMessageToWebSocket(user + sp + message.Data);
+        console.log('result: ', result.node);
+        const odata = result.node.Output.data;
+        if (typeof odata === 'string' && odata.includes('[0m@\x1B[34mGetting-Started\x1B[0m]>')) {
+            if (odata.includes('Received confirmation of your broadcast')) {
+                const youmsg = odata.split('\x1B[32m')[1].split('\x1B[0m')[0];
+                sendMessageToWebSocket('YouSelf: ' + youmsg);
+            }else {
+                sendMessageToWebSocket(odata.replace(/\u001B\[[0-9;]*m/g, ''));
+                // console.log('output',result.node.Output);
             }
         }
-
+        var messages = result.node.Messages;
+        for (const msg of messages) {
+            console.log('message:',messages)
+        }
     }
 }
 
@@ -62,6 +63,7 @@ function sendMessageToWebSocket(message) {
         console.log('WebSocket is not open, please restart index.js');
     }
 }
+
 setInterval(() => {
     receiveMsg();
 }, 5000);
