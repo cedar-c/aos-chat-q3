@@ -2,6 +2,8 @@
 
 [join discord channal](https://discord.gg/VBVmJfr5)
 
+<h1>You can join discord and use it directly</h1>
+
 <h1> Install </h1>
 
 This program need ws、fs、express、discord.js、@permaweb/aoconnect
@@ -12,7 +14,7 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 
 1. replace yours `process_id` in `index.js` and `server.js`
 
-2. run `.load client.lua` 
+2. run `.load-blueprint chat` 
 
 3. run `.load chatroom.lua`
 
@@ -20,22 +22,19 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
    
 5. run `node index.js`
 
-6. registering your process with the :router
+6. registering your process
 
-   `ao.send({ Target = "xnkv_QpWqICyt8NpVMbfsUQciZ4wlm5DigLrfXRm8fY", Action = "Register", Name = "[YOUR NAME HERE]" })`
+`Join("Getting-Started", "yourName")`
    
-   like cookbook said, you can use `Join("[YOUR NAME HERE]","[YOUR NickNAME HERE]")` to join chatroom
-
 
 <h1>Send Message</h1>
 
 you can use "Say" to send with your name by you regist.
 
-`Say("msg","[YOUR NAME HERE]","[YOUR NICKNAME HERE]")`
+`Say("msg")`
 
-NICKNAME is not necessary
+you alse can send msg by discord, it will be forward to "Getting-Started" room.
 
-The result is displayed in discord as ：`[YOUR NickNAME HERE](if you set) ： msg` 
 
 <h1> Img </h1>
 The print content has now been updated to show the name or pid you defined when you sent it instead of your bot name。
