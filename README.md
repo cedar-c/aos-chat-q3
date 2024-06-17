@@ -16,7 +16,9 @@ You can send messages directly, but this will use the default pid.
 
       Note: Your pid must have loaded the `chatroom.lua` of this project, and has joined `Getting-Started` room.
 
-<h1> ======================================================================================================= </h1>
+<h1> </h1>
+
+<h1> </h1>
 
 <h1> Install </h1>
 
