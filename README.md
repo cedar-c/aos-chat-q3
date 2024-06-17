@@ -30,7 +30,7 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 
 1. replace yours `process_id` in `index.js` and `server.js`
 
-2. make sure your process has executed the command:
+2. make sure your `process_id` has executed the command:
    `.load-blueprint chat` and `.load chatroom.lua` and `Join("Getting-Started", "yourName")`
 
 3. run `node server.js`
@@ -40,7 +40,7 @@ This program need ws、fs、express、discord.js、@permaweb/aoconnect
 
 <h1>Send Message</h1>
 
-you can use "Say" to send with your name by you regist.
+you can use `Say` to send msg.
 
 `Say("msg")`
 
