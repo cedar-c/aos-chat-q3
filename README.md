@@ -35,18 +35,3 @@ you can use "Say" to send with your name by you regist.
 
 you alse can send msg by discord, it will be forward to "Getting-Started" room.
 
-
-<h1> Img </h1>
-The print content has now been updated to show the name or pid you defined when you sent it instead of your bot name。
-
-aos1 terminal:
-
-![aos1.png](img%2Faos1.png)
-
-aos2 terminal:
-
-![aos2.png](img%2Faos2.png)
-
-discord:
-
-![discord.png](img%2Fdiscord.png)
