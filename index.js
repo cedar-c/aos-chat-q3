@@ -42,7 +42,6 @@ async function receiveMsg() {
             let send = message.Tags.find(t => t.name === 'Send');
             if (transSelf && send && send.value === 'discord') {
                 const user = message.Tags.find(t => t.name === 'NickName').value;
-                console.log(user + ':' + message.Data);
                 sendMessageToWebSocket('Send from Discord<' + user + '>：' + message.Data);
             }else {
                 sendMessageToWebSocket('Send from aos terminal：' + message.Data);
